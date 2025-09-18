@@ -10,6 +10,7 @@ namespace Lr.MRK._01._01
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Привет");
         }
     }
 }
