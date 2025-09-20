@@ -10,15 +10,18 @@ namespace list
     {
         static void Main(string[] args)
         {
-            List<string> list = new List<string>();
-            Console.WriteLine("Исходный размер списка = " + list.Count);
-            list.Add("Маша");
-            list.Add("Ирина");
-            list.Add("Кира");
-            list.Add("Егор");
-            list.Add("Алина");
-            Console.WriteLine("Размер списка после добавления элемента " + list.Count);
+            List<string> ishod = new List<string>();
+            Console.WriteLine("Исходный размер списка = " + ishod.Count);
+            ishod.Add("Маша");
+            ishod.Add("Ирина");
+            ishod.Add("Кира");
+            ishod.Add("Егор");
+            ishod.Add("Алина");
+            Console.WriteLine("Размер списка после добавления элемента " + ishod.Count);
 
+            List<string> conez = new List<string>();
+            Console.WriteLine("Введите текст: ");
+            conez.Add(Console.ReadLine());
         }
     }
 }
