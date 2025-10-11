@@ -10,6 +10,7 @@ namespace Zadacha_1__var_8
     {
         static void Main(string[] args)
         {
+          
         }
     }
 }
