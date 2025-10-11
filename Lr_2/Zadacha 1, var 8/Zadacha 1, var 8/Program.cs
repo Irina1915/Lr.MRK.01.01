@@ -12,5 +12,5 @@ namespace Zadacha_1__var_8
         {
           
         }
-    }
+   
 }
