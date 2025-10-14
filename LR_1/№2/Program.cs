@@ -10,25 +10,29 @@ namespace _2
     {
         static void Main(string[] args)
         {
-            // С клавиатуры ввести массив из n вещественных чисел.
-            Console.WriteLine("Сколько элементов будет в массиве: ");
-            int n = Convert.ToInt32(Console.ReadLine());
-            int[] array = new int[n];
-            Console.WriteLine("Введите элементы массива: ");
-            for (int i = 0; i < n; i++)
+            //2. Дана последовательность из 4000 случайных чисел от 1 до 5000. Сохранить в отдельной структуре данных сумму пар соседних элементов, находящихся на четных позициях (0 и 2, 2 и 4, 4 и 6 и т.д). Результат вывести на экран в формате: [a1, a2, a3, ….., an], где а – очередное найденное число.
+            Random rnd = new Random();
+            int size = 4000;
+            int[] sequence = new int[size];
+
+            for (int i = 0; i < size; i++)
             {
-                array[i] = Convert.ToInt32(Console.ReadLine());
+                sequence[i] = rnd.Next(1, 5001); // числа от 1 до 5000
             }
-            for (int i = 0; i < n; i++)
+
+            List<int> sums = new List<int>();
+
+            // Перебираем четные позиции: 0, 2, 4, ... до size-2
+            for (int i = 0; i < size - 2; i += 2)
             {
-                for (int j = 0; i + 1 < n; j++)
-                {
-                    if (array[i] == array[j])
-                    {
-                        Console.WriteLine(array[i]);
-                    }
-                }
+                int sum = sequence[i] + sequence[i + 2];
+                sums.Add(sum);
             }
+
+            // Вывод результата
+            Console.WriteLine("Результат в формате: [a1, a2, a3, ….., an]");
+            Console.WriteLine("[" + string.Join(", ", sums) + "]");
         }
     }
 }
+    
