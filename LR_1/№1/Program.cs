@@ -19,6 +19,16 @@ namespace _1
             {
                 array[i] = Convert.ToInt32(Console.ReadLine());
             }
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; i + 1 < n; j++)
+                {
+                    if (array[i] == array[j])
+                    {
+                        Console.WriteLine(array[i]);
+                    }
+                }
+            }
         }
     }
 }
