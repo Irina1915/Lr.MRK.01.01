@@ -22,7 +22,19 @@ namespace _1
 
             int[] array = new int[n]; // Создаем массив длины n
 
-           
+            Console.WriteLine($"Введите {n} целых чисел:");
+            // Цикл для ввода каждого элемента массива
+            for (int i = 0; i < n; i++)
+            {
+                // Ввод и проверка, что введено целое число
+                while (!int.TryParse(Console.ReadLine(), out array[i]))
+                {
+                    Console.WriteLine("Некорректный ввод. Введите целое число:");
+                }
+            }
+
+
+
         }
     }
 }
