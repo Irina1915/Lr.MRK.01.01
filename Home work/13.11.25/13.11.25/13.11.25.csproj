@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{431345DE-9A83-4D2A-A2FD-4BA51F680B1F}</ProjectGuid>
+    <ProjectGuid>{D199D7E7-B246-41B3-B101-558138564575}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Distant</RootNamespace>
-    <AssemblyName>Distant</AssemblyName>
+    <RootNamespace>_13._11._25</RootNamespace>
+    <AssemblyName>13.11.25</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -45,8 +45,7 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Sale_of_phones.cs" />
-    <Compile Include="Telephone_sales_analysis.cs" />
+    <Compile Include="Sale_of_laptop.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
