@@ -19,6 +19,14 @@ namespace Lr2.@new
         {
             string[] genres = new string[] { "Спиннинги", "Поплавочные снасти", "Фидеры", "Лески" };
             var (tovars, counts) = InputModel.InputTovarsByCenre();
+
+            string userQuery = InputModel.InputUserQuery();
+
+            int indexGenre = SearchingModule.FindIndexGenre(userQuery, genres);
+            var (tovarsUserGenre, coutsUserGenre) = SearchingModule.FindAllTovarsByCenre(indexGenre, tovars, counts);
+
+            AnalysisDataModule.SortTovars(tovarsUserGenre, coutsUserGenre);
+            Print(tovarsUserGenre);
         }
     }
 }

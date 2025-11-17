@@ -8,7 +8,7 @@ namespace Lr2new
 {
     internal class AnalysisDataModule
     {
-        public void SortTovars(List<string> tovars, List<int> counts)
+        static public void SortTovars(List<string> tovars, List<int> counts)
         {
             for (int i = 0; i < counts.Count; ++i)
             {
@@ -29,7 +29,7 @@ namespace Lr2new
             } 
         }
 
-        public double CalculateAverage(List<int> counts)
+        static public double CalculateAverage(List<int> counts)
         {
             int sum = 0;
             foreach (int count in counts)
