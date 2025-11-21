@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace Lr2new
 {
-    public class SearchingModule
+    internal class SearchingModule
     {
-        static public int FindIndexGenre(string userQuery, string[] genres)
+        static public int FindIndexKatalog(string userQuery, string[] katalog)
         {
-            for(int index = 0; index < genres.Length; index++)
+            for (int index = 0; index < katalog.Length; ++index)
             {
-                string valueGenre = genres[index];
-                if(valueGenre == userQuery)
+                string valueKatalog = katalog[index].ToLower();
+                if (valueKatalog == userQuery.ToLower())
                 {
                     return index;
                 }
@@ -22,16 +22,17 @@ namespace Lr2new
 
             return -1;
         }
-
-        static public (List<string>, List<int>) FindAllTovarsByCenre(int indexGenre, List<string>[] allTovars, List<int>[] counts)
+        static public (List<string>, List<int>) FindAllTovarsByKatalog(int indexkatalog,
+                                                             List<string>[] allKatalog,
+                                                             List<int>[] counts)
         {
-            List<string> tovarsByGenre = new List<string>();
-            List<int> countsByGenre = new List<int>();
+            List<string> TovarsByKatalog = new List<string>();
+            List<int> countsByKatalog = new List<int>();
 
-            tovarsByGenre = allTovars[indexGenre];
-            countsByGenre = counts[indexGenre];
+            TovarsByKatalog = allKatalog[indexkatalog];
+            countsByKatalog = counts[indexkatalog];
 
-            return (tovarsByGenre, countsByGenre);
+            return (TovarsByKatalog, countsByKatalog);
         }
     }
 }

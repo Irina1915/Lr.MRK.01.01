@@ -9,24 +9,26 @@ using System.Threading.Tasks;
 
 namespace Lr2.@new
 {
-    class Program
+    internal class Program
     {
         static void Print(List<string> tovars)
         {
-            Console.WriteLine(String.Join(","));
+            Console.WriteLine(String.Join(", ", tovars));
         }
         static void Main()
         {
-            string[] genres = new string[] { "Спиннинги", "Поплавочные снасти", "Фидеры", "Лески" };
-            var (tovars, counts) = InputModel.InputTovarsByCenre();
-
-            string userQuery = InputModel.InputUserQuery();
-
-            int indexGenre = SearchingModule.FindIndexGenre(userQuery, genres);
-            var (tovarsUserGenre, coutsUserGenre) = SearchingModule.FindAllTovarsByCenre(indexGenre, tovars, counts);
-
-            AnalysisDataModule.SortTovars(tovarsUserGenre, coutsUserGenre);
-            Print(tovarsUserGenre);
+            string[] katalog = new string[] { "Спиннинги", "Лески", "Фридеры" };
+            var (tovars, counts) = InputModule.InputTovarsByKatalog();
+            string userQuery = InputModule.InputUserQuery();
+            int indexKatalog = SearchingModule.FindIndexKatalog(userQuery, katalog);
+            if (indexKatalog < 0)
+            {
+                Console.WriteLine("Указан несуществующий жанр");
+                return;
+            }
+            var (TovarsUserKatalog, countsUserKatalog) = SearchingModule.FindAllTovarsByKatalog(indexKatalog, tovars, counts);
+            AnalysisDataModule.Sorttovars(TovarsUserKatalog, countsUserKatalog);
+            Print(TovarsUserKatalog);
         }
     }
 }

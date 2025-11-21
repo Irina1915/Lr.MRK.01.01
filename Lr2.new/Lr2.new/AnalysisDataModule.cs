@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace Lr2new
 {
-    internal class AnalysisDataModule
+    public class AnalysisDataModule
     {
-        static public void SortTovars(List<string> tovars, List<int> counts)
+        static public void Sorttovars(List<string> customers, List<int> counts)
         {
             for (int i = 0; i < counts.Count; ++i)
             {
-                for(int j = 0; j < counts.Count - 1; ++j)
+                for (int j = 0; j < counts.Count - 1; ++j)
                 {
                     bool condition = counts[j + 1] > counts[j];
                     if (condition)
@@ -21,12 +21,12 @@ namespace Lr2new
                         counts[j] = counts[j + 1];
                         counts[j + 1] = temp_counts;
 
-                        string temp_tovars = tovars[j];
-                        tovars[j] = tovars[j + 1];
-                        tovars[j + 1] = temp_tovars;
+                        string temp_customers = customers[j];
+                        customers[j] = customers[j + 1];
+                        customers[j + 1] = temp_customers;
                     }
                 }
-            } 
+            }
         }
 
         static public double CalculateAverage(List<int> counts)
@@ -40,4 +40,5 @@ namespace Lr2new
             return sum / counts.Count;
         }
     }
+
 }

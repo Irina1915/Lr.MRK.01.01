@@ -6,51 +6,43 @@ using System.Threading.Tasks;
 
 namespace Lr2new
 {
-    internal class InputModel
+    internal class InputModule
     {
-        public (List<string>[], List<int>[]) InputTovarsByCenre()
+        static public (List<string>[], List<int>[]) InputTovarsByKatalog()
         {
-            List<string>[] tovarsByKategoria = new List<string>[2];
-            List<int>[] counts = new List<int>[4];
+            List<string>[] TovarsByKatalog = new List<string>[3] { new List<string>(),
+                                                                new List<string>(),
+                                                                new List<string>()
+            };
 
-            //Заполняем товар Спиннинг (нулевой индекс)
-            tovarsByKategoria[0].Add("Спиннинг b6");
+            List<int>[] counts = new List<int>[3]{ new List<int>(),
+                                                   new List<int>(),
+                                                   new List<int>()
+            };
+
+            TovarsByKatalog[0].Add("Спиннинг1");
             counts[0].Add(10);
-            tovarsByKategoria[0].Add("Спиннинг k2");
+            TovarsByKatalog[0].Add("Спиннинг2");
             counts[0].Add(5);
-            tovarsByKategoria[0].Add("Спиннинг y78");
+            TovarsByKatalog[0].Add("Спиннинг3");
             counts[0].Add(1);
 
-            //Заполняем товар Поплавочные снасти (первый индекс)
-            tovarsByKategoria[0].Add("Попловочная снасть 1");
-            counts[1].Add(6);
-            tovarsByKategoria[0].Add("Попловочная снасть 2");
-            counts[1].Add(5);
-            tovarsByKategoria[0].Add("Попловочная снасть 3");
-            counts[1].Add(4);
+            TovarsByKatalog[1].Add("Леска1");
+            counts[1].Add(2);
+            TovarsByKatalog[1].Add("Леска2");
+            counts[1].Add(25);
 
-            //Заполняем товар Фидеры (второй индекс)
-            tovarsByKategoria[0].Add("Фидер 1");
-            counts[2].Add(2);
-            tovarsByKategoria[0].Add("Фидер 2");
-            counts[2].Add(9);
-            tovarsByKategoria[0].Add("Фидер 3");
-            counts[3].Add(5);
+            TovarsByKatalog[2].Add("Фридер1");
+            counts[2].Add(30);
 
-            //Заполняем товар Лески (третий индекс)
-            tovarsByKategoria[0].Add("Леска 1");
-            counts[4].Add(1);
-            tovarsByKategoria[0].Add("Леска 2");
-            counts[4].Add(8);
-            tovarsByKategoria[0].Add("Леска 3");
-            counts[4].Add(3);
-
-            return (tovarsByKategoria, counts);
+            return (TovarsByKatalog, counts);
         }
-        public string InputUserQuery()
+        static public string InputUserQuery()
         {
-            Console.WriteLine("Введите, пожалуйста, категорию (Спиннинги, Поплавочные снасти, Фидеры, Лески): ");
+            Console.Write("Введите, пожалуйста, каталог (Спиннинги/Лески/Фридеры): ");
             return Console.ReadLine();
         }
+
     }
+
 }
