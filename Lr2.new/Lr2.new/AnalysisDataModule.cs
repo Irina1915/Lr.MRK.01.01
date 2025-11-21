@@ -28,7 +28,6 @@ namespace Lr2new
                 }
             }
         }
-
         static public double CalculateAverage(List<int> counts)
         {
             int sum = 0;
