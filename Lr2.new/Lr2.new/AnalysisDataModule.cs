@@ -36,7 +36,6 @@ namespace Lr2new
             {
                 sum += count;
             }
-
             return sum / counts.Count;
         }
     }
