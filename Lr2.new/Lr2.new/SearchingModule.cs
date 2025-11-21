@@ -30,6 +30,7 @@ namespace Lr2new
             List<int> countsByKatalog = new List<int>();
 
             TovarsByKatalog = allKatalog[indexkatalog];
+
             countsByKatalog = counts[indexkatalog];
 
             return (TovarsByKatalog, countsByKatalog);
