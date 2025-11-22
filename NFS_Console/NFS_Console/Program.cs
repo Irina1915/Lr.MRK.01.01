@@ -20,6 +20,7 @@ namespace NFS_Console
             int t = 1;
             while (true)
             {
+
                 Console.WriteLine("_________________________________________________________________________________");
                 foreach (Car avto in avtos)
                 {
