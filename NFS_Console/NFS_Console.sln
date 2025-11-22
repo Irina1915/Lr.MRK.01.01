@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35818.85 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NFS_Console", "NFS_Console\NFS_Console.csproj", "{F45EB11A-86FB-4A8E-84DF-679DF539FA8C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F45EB11A-86FB-4A8E-84DF-679DF539FA8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F45EB11A-86FB-4A8E-84DF-679DF539FA8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F45EB11A-86FB-4A8E-84DF-679DF539FA8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F45EB11A-86FB-4A8E-84DF-679DF539FA8C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DD31D775-F8C2-4B5C-AF58-B22B993A76E6}
+	EndGlobalSection
+EndGlobal
