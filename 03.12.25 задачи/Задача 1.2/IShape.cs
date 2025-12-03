@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Задача_1._2
 {
-    public interface IShape
+    public interface IShape  // Интерфейс для каждой фигуры
     {
-        void Accept(IVisitor visitor);
+        void Accept(IVisitor visitor); // Метод принятия посетителя
     }
 }

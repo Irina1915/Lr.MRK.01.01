@@ -9,18 +9,19 @@ namespace Задача_1._2
 {
     public class PerimeterCalculator : IVisitor
     {
+        // Метод для обработки круга
         public void Visit(Circle circle)
         {
             double perimeter = 2 * Math.PI * circle.Radius;
             Console.WriteLine($"Периметр круга: {perimeter:F2}");
         }
-
+        // Метод для обработки прямоугольника
         public void Visit(Rectangle rectangle)
         {
             double perimeter = 2 * (rectangle.Width + rectangle.Height);
             Console.WriteLine($"Периметр прямоугольника: {perimeter:F2}");
         }
-
+        // Метод для обработки треугольника
         public void Visit(Triangle triangle)
         {
             double perimeter = triangle.SideA + triangle.SideB + triangle.SideC;

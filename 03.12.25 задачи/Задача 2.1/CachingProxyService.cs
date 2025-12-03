@@ -9,7 +9,7 @@ namespace Задача_2._1
     public class CachingProxyService : IDataService
     {
         private readonly IDataService _realService;
-        private readonly Dictionary<string, (string data, DateTime expiry)> _cache = new();
+        private readonly Dictionary<string, (string data, DateTime expiry)> _cache = new Dictionary<string, (string data, DateTime expiry)>();
         private readonly TimeSpan _cacheDuration;
 
         public CachingProxyService(IDataService realService, int cacheMinutes = 1)
