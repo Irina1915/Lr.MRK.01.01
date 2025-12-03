@@ -8,6 +8,6 @@ namespace Задача_1._2
 {
     public interface IShape
     {
-         void Accept(IVisitor visitor);
+        void Accept(IVisitor visitor);
     }
 }
