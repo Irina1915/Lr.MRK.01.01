@@ -24,8 +24,29 @@ namespace ManyClassesAplication
             storage.SetProductQuantity(mers, 2);
             storage.SetProductQuantity(yaz, 5);
 
-            storage.SetProductQantity();
+            storage.GetProductQuantity();
             storage.CalculateMoney();
+
+            Console.WriteLine();
+
+            Report report = new Report();
+
+            ReportRow row1 = new ReportRow();
+            row1.Product = "Mers";
+            row1.Quantity = 2;
+            row1.Price = 1000000;
+
+            ReportRow row2 = new ReportRow();
+            row2.Product = "Vaz";
+            row2.Quantity = 5;
+            row2.Price = 10000000;
+
+            report.AddRecord(row1);
+            report.AddRecord(row2);
+
+            Console.WriteLine("Содержимое отчета:");
+            Console.WriteLine(report);
+            report.CalculateSum();
         }
 
     }

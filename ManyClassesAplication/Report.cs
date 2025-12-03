@@ -6,36 +6,41 @@ using System.Threading.Tasks;
 
 namespace ManyClassesAplication
 {
-    class Report
+    public class Report
     {
         private List<ReportRow> rows_ = new List<ReportRow>();
-
         public void AddRecord(ReportRow row)
         {
             rows_.Add(row);
         }
-
         public string ConvertReportToString(ReportRow row)
         {
-            return row.Product + ";" + row.Quantity + ";" + row.Price;
+            return row.Product + "; " + row.Quantity + "; " + row.Price;
         }
-
-        public void PrintReport()
+        public string ConvertAllToString()
         {
+            if (rows_.Count == 0)
+                return "Отчет пуст";
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("Продукт; Количество; Цена");
             foreach (ReportRow row in rows_)
             {
-                Console.WriteLine(ConvertReportToString(row) + "\n");
+                sb.AppendLine(ConvertReportToString(row));
             }
+            return sb.ToString();
         }
-
+        public override string ToString()
+        {
+            return ConvertAllToString();
+        }
         public void CalculateSum()
         {
             double sum = 0;
-            foreach(ReportRow row in rows_)
+            foreach (ReportRow row in rows_)
             {
                 sum += row.Quantity * row.Price;
             }
-            Console.WriteLine("" + sum);
+            Console.WriteLine("Сумма: " + sum + "руб.");
         }
     }
 
