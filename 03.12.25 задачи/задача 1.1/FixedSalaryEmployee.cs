@@ -6,26 +6,12 @@ using System.Threading.Tasks;
 
 namespace _03._12._25
 {
-    public class FixedSalaryEmployee : Employee
+    public class FixedSalaryEmployee : Employee   // Месячная оплата
     {
-        public decimal MonthlySalary { get; set; }
-
-        public FixedSalaryEmployee(int id, string fullName, string email, decimal monthlySalary)
-            : base(id, fullName, email)
+        public decimal MonthlySalary; // Доп.свойство - месячный оклад
+        public override decimal CalculateSalary() // Расчет зарплаты
         {
-            MonthlySalary = monthlySalary;
-        }
-
-        public override decimal CalculateSalary()
-        {
-            return MonthlySalary;
-        }
-
-        public override void DisplayInfo()
-        {
-            base.DisplayInfo();
-            Console.WriteLine($"Тип оплаты: Фиксированная месячная оплата");
-            Console.WriteLine($"Месячный оклад: {MonthlySalary} руб.");
+            return MonthlySalary; // Возврат оклада
         }
     }
 

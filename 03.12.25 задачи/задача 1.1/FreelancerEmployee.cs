@@ -6,39 +6,16 @@ using System.Threading.Tasks;
 
 namespace _03._12._25
 {
-    public class FreelancerEmployee : Employee
+    public class FreelanceEmployee : Employee // Оплата за проект и ставка НДФЛ 
     {
-        public decimal ProjectPayment { get; set; }
-        public decimal TaxRate { get; set; } // Ставка НДФЛ в процентах
-
-        public FreelancerEmployee(int id, string fullName, string email,
-                                decimal projectPayment, decimal taxRate = 13m)
-            : base(id, fullName, email)
-        {
-            ProjectPayment = projectPayment;
-            TaxRate = taxRate;
-        }
+        public decimal ProjectPayment; // Оплата за проект
+        public int CompletedProjects;  // Количесвто выполненных проектов
 
         public override decimal CalculateSalary()
         {
-            decimal taxAmount = ProjectPayment * (TaxRate / 100);
-            return ProjectPayment - taxAmount; // Зарплата после вычета налогов
-        }
-
-        // Метод для получения суммы налога
-        public decimal GetTaxAmount()
-        {
-            return ProjectPayment * (TaxRate / 100);
-        }
-
-        public override void DisplayInfo()
-        {
-            base.DisplayInfo();
-            Console.WriteLine($"Тип оплаты: Оплата за проект");
-            Console.WriteLine($"Оплата проекта: {ProjectPayment} руб.");
-            Console.WriteLine($"Ставка НДФЛ: {TaxRate}%");
-            Console.WriteLine($"Сумма налога: {GetTaxAmount()} руб.");
+            decimal total = ProjectPayment * CompletedProjects;  // Общий доход
+            decimal tax = total * 0.13m; // Вычитание налога 13%
+            return total - tax;         // Доход
         }
     }
-
 }

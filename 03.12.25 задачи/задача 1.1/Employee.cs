@@ -6,29 +6,13 @@ using System.Threading.Tasks;
 
 namespace _03._12._25
 {
-    public abstract class Employee
+    public abstract class Employee  // Абстрактный класс, котрый нелья использовать напрямую
     {
-        public int Id { get; set; }
-        public string FullName { get; set; }
-        public string Email { get; set; }
+        public int Id;              // ID-номер сотрудника
+        public string FullName;     // ФИО
+        public string Email;        // Электронная почта
 
-        protected Employee(int id, string fullName, string email)
-        {
-            Id = id;
-            FullName = fullName;
-            Email = email;
-        }
-        // Абстрактный метод для расчета зарплаты
         public abstract decimal CalculateSalary();
-
-        // Виртуальный метод для вывода информации
-        public virtual void DisplayInfo()
-        {
-            Console.WriteLine($"ID: {Id}");
-            Console.WriteLine($"ФИО: {FullName}");
-            Console.WriteLine($"Email: {Email}");
-            Console.WriteLine($"Зарплата: {CalculateSalary()} руб.");
-        }
     }
 }
 

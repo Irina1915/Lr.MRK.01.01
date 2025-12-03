@@ -6,39 +6,17 @@ using System.Threading.Tasks;
 
 namespace _03._12._25
 {
-    public class HourlySalaryEmployee : Employee
+    public class HourlySalaryEmployee : Employee // Почасовая оплата и сверхурочные
     {
-        public decimal HourlyRate { get; set; }
-        public int HoursWorked { get; set; }
-        public int OvertimeHours { get; set; }
-        public decimal OvertimeMultiplier { get; set; } = 1.5m; // Коэффициент сверхурочных
-
-        public HourlySalaryEmployee(int id, string fullName, string email,
-                                  decimal hourlyRate, int hoursWorked, int overtimeHours = 0)
-            : base(id, fullName, email)
-        {
-            HourlyRate = hourlyRate;
-            HoursWorked = hoursWorked;
-            OvertimeHours = overtimeHours;
-        }
+        public decimal HourlyRate;         // Ставка за час
+        public int HoursWorked;            // Количество отработанных часов
+        public int OvertimeHours;          // Сверхурочные часы
 
         public override decimal CalculateSalary()
         {
-            decimal regularPay = HourlyRate * Math.Min(HoursWorked, 160); // Норма часов в месяц
-            decimal overtimePay = OvertimeHours > 0
-                ? HourlyRate * OvertimeMultiplier * OvertimeHours
-                : 0;
-
-            return regularPay + overtimePay;
-        }
-
-        public override void DisplayInfo()
-        {
-            base.DisplayInfo();
-            Console.WriteLine($"Тип оплаты: Почасовая оплата");
-            Console.WriteLine($"Ставка в час: {HourlyRate} руб.");
-            Console.WriteLine($"Отработано часов: {HoursWorked}");
-            Console.WriteLine($"Сверхурочные часы: {OvertimeHours}");
+            decimal regular = HoursWorked * HourlyRate;           // Регулярная оплата
+            decimal overtime = OvertimeHours * HourlyRate * 1.5m; // Сверхурочные
+            return regular + overtime;                            // общая сумма
         }
     }
 
