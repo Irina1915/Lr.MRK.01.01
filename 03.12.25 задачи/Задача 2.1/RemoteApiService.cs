@@ -7,17 +7,19 @@ using System.Threading.Tasks;
 
 namespace Задача_2._1
 {
+    // Это настоящая метеостанция (долго отвечает)
     public class RemoteApiService : IDataService
     {
         public string FetchData(string resourceId)
         {
-            // Имитация долгого сетевого запроса
-            Console.WriteLine($"Запрос к удаленному API для {resourceId}...");
-            Thread.Sleep(2000); // 2 секунды ожидания
+            // Делаем вид, что звоним по телефону и ждем ответ
+            Console.WriteLine($"Звоню на метеостанцию, спрашиваю про: {resourceId}");
+            Thread.Sleep(2000); // Ждем 2 секунды (как будто долгий звонок)
 
-            // Имитация реальных данных
-            string data = $"Данные для {resourceId} сгенерированы в {DateTime.Now:HH:mm:ss}";
-            Console.WriteLine($"API вернул данные для {resourceId}");
+            // Получаем ответ
+            Random random = new Random();
+            string data = $"Погода для {resourceId}: {random.Next(-10, 25)}°C";
+            Console.WriteLine($"Получил ответ от метеостанции");
 
             return data;
         }

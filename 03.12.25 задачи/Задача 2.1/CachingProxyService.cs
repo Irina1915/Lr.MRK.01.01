@@ -6,51 +6,62 @@ using System.Threading.Tasks;
 
 namespace Задача_2._1
 {
+    // Это наш блокнот, куда записываем ответы
     public class CachingProxyService : IDataService
     {
-        private readonly IDataService _realService;
-        private readonly Dictionary<string, (string data, DateTime expiry)> _cache = new Dictionary<string, (string data, DateTime expiry)>();
-        private readonly TimeSpan _cacheDuration;
+        private IDataService realService; // Ссылка на метеостанцию
+        private Dictionary<string, CacheItem> cache;
+        private TimeSpan cacheDuration;
+
+        // Вспомогательный класс для хранения данных в кэше
+        private class CacheItem
+        {
+            public string Data { get; set; }
+            public DateTime Expiry { get; set; }
+        }
 
         public CachingProxyService(IDataService realService, int cacheMinutes = 1)
         {
-            _realService = realService;
-            _cacheDuration = TimeSpan.FromMinutes(cacheMinutes);
+            this.realService = realService;
+            this.cache = new Dictionary<string, CacheItem>();
+            cacheDuration = TimeSpan.FromMinutes(cacheMinutes); // Запоминаем на 1 минуту
         }
 
         public string FetchData(string resourceId)
         {
-            // Проверяем, есть ли данные в кэше и не устарели ли они
-            if (_cache.TryGetValue(resourceId, out var cachedItem))
+            // Шаг 1: Проверяем блокнот
+            if (cache.ContainsKey(resourceId))
             {
-                if (DateTime.Now < cachedItem.expiry)
+                CacheItem cachedItem = cache[resourceId];
+                // Смотрим, не устарела ли запись
+                if (DateTime.Now < cachedItem.Expiry) // Если еще актуально
                 {
-                    Console.WriteLine($"Данные для {resourceId} взяты из кэша");
-                    return cachedItem.data;
+                    Console.WriteLine($"Беру из блокнота: {resourceId}");
+                    return cachedItem.Data;
                 }
                 else
                 {
-                    Console.WriteLine($"Кэш для {resourceId} устарел");
-                    _cache.Remove(resourceId);
+                    Console.WriteLine($"Запись устарела, выбрасываю");
+                    cache.Remove(resourceId); // Выкидываем старую запись
                 }
             }
 
-            // Если нет в кэше или устарел - идем в реальный сервис
-            string freshData = _realService.FetchData(resourceId);
+            // Шаг 2: Если в блокноте нет или устарело - звоним на метеостанцию
+            Console.WriteLine($"Нет в блокноте, придется звонить...");
+            string freshData = realService.FetchData(resourceId);
 
-            // Сохраняем в кэш с временем жизни
-            DateTime expiryTime = DateTime.Now.Add(_cacheDuration);
-            _cache[resourceId] = (freshData, expiryTime);
-            Console.WriteLine($"Данные для {resourceId} сохранены в кэш до {expiryTime:HH:mm:ss}");
+            // Шаг 3: Записываем в блокнот
+            DateTime expiryTime = DateTime.Now.Add(cacheDuration);
+            CacheItem newItem = new CacheItem
+            {
+                Data = freshData,
+                Expiry = expiryTime
+            };
+            cache[resourceId] = newItem;
+            Console.WriteLine($"Записал в блокнот (актуально до: {expiryTime:HH:mm:ss})");
 
             return freshData;
         }
-
-        // Метод для очистки кэша (опционально)
-        public void ClearCache()
-        {
-            _cache.Clear();
-            Console.WriteLine("Кэш очищен");
-        }
     }
 }
+

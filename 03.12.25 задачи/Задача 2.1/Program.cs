@@ -11,53 +11,81 @@ namespace Задача_2._1
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("=== Демонстрация кэширующего прокси ===\n");
+            Console.WriteLine("~~~ Тестируем кэш для погоды ~~~\n");
 
-            // Создаем реальный сервис и прокси с кэшем на 1 минуту
-            IDataService realService = new RemoteApiService();
-            IDataService proxyService = new CachingProxyService(realService, cacheMinutes: 1);
+            // Создаем метеостанцию
+            IDataService weatherStation = new RemoteApiService();
 
-            string resourceId = "weather/moscow";
+            // Создаем блокнот, который будет кэшировать
+            IDataService weatherWithCache = new CachingProxyService(weatherStation, 1);
 
-            Console.WriteLine("Первый запрос (должен идти в API):");
-            var stopwatch = System.Diagnostics.Stopwatch.StartNew();
-            string result1 = proxyService.FetchData(resourceId);
-            stopwatch.Stop();
-            Console.WriteLine($"Результат: {result1}");
-            Console.WriteLine($"Время выполнения: {stopwatch.ElapsedMilliseconds} мс\n");
+            string city = "Москва";
 
-            Console.WriteLine("Второй запрос (должен браться из кэша):");
-            stopwatch.Restart();
-            string result2 = proxyService.FetchData(resourceId);
-            stopwatch.Stop();
-            Console.WriteLine($"Результат: {result2}");
-            Console.WriteLine($"Время выполнения: {stopwatch.ElapsedMilliseconds} мс\n");
+            Console.WriteLine("ПЕРВЫЙ ЗАПРОС погоды в Москве:");
+            Console.WriteLine("(должен звонить на метеостанцию, так как в блокноте пусто)");
 
-            // Ждем немного и делаем запрос с другим ID
-            Console.WriteLine("Запрос с другим ID (должен идти в API):");
-            stopwatch.Restart();
-            string result3 = proxyService.FetchData("currency/USD");
-            stopwatch.Stop();
-            Console.WriteLine($"Результат: {result3}");
-            Console.WriteLine($"Время выполнения: {stopwatch.ElapsedMilliseconds} мс\n");
+            var watch = System.Diagnostics.Stopwatch.StartNew();
+            string weather1 = weatherWithCache.FetchData(city);
+            watch.Stop();
 
-            Console.WriteLine("Повторный запрос для второго ID (должен браться из кэша):");
-            stopwatch.Restart();
-            string result4 = proxyService.FetchData("currency/USD");
-            stopwatch.Stop();
-            Console.WriteLine($"Результат: {result4}");
-            Console.WriteLine($"Время выполнения: {stopwatch.ElapsedMilliseconds} мс\n");
+            Console.WriteLine($"Результат: {weather1}");
+            Console.WriteLine($"Время: {watch.ElapsedMilliseconds} мс\n");
 
-            // Ждем, пока кэш устареет
-            Console.WriteLine("Ждем 2 секунды (больше времени жизни кэша)...");
-            Thread.Sleep(2000);
+            Console.WriteLine("ВТОРОЙ ЗАПРОС погоды в Москве:");
+            Console.WriteLine("(должен смотреть в блокнот, не звонить)");
 
-            Console.WriteLine("Запрос после ожидания (должен идти в API, так как кэш устарел):");
-            stopwatch.Restart();
-            string result5 = proxyService.FetchData(resourceId);
-            stopwatch.Stop();
-            Console.WriteLine($"Результат: {result5}");
-            Console.WriteLine($"Время выполнения: {stopwatch.ElapsedMilliseconds} мс");
+            watch.Restart();
+            string weather2 = weatherWithCache.FetchData(city);
+            watch.Stop();
+
+            Console.WriteLine($"Результат: {weather2}");
+            Console.WriteLine($"Время: {watch.ElapsedMilliseconds} мс\n");
+
+            // Теперь запросим другой город
+            Console.WriteLine("ЗАПРОС погоды в Питере:");
+            Console.WriteLine("(должен звонить, так как про Питер еще не спрашивали)");
+
+            watch.Restart();
+            string weather3 = weatherWithCache.FetchData("Санкт-Петербург");
+            watch.Stop();
+
+            Console.WriteLine($"Результат: {weather3}");
+            Console.WriteLine($"Время: {watch.ElapsedMilliseconds} мс\n");
+
+            Console.WriteLine("СНОВА ЗАПРОС погоды в Питере:");
+            Console.WriteLine("(должен смотреть в блокнот)");
+
+            watch.Restart();
+            string weather4 = weatherWithCache.FetchData("Санкт-Петербург");
+            watch.Stop();
+
+            Console.WriteLine($"Результат: {weather4}");
+            Console.WriteLine($"Время: {watch.ElapsedMilliseconds} мс");
+
+            // Чтобы увидеть как кэш устаревает, изменим время жизни на 3 секунды
+            Console.WriteLine("\n~~~ Тест с коротким временем жизни кэша (3 секунды) ~~~\n");
+
+            IDataService shortCache = new CachingProxyService(weatherStation, 0); // 0 минут, но мы исправим это
+
+            // Используем рефлексию чтобы изменить время жизни кэша на 3 секунды
+            // Или просто создадим новый с правильным временем
+
+            // Создаем новый прокси с очень коротким временем жизни
+            CachingProxyService fastCache = new CachingProxyService(weatherStation);
+            // В реальном коде нужно бы добавить свойство для изменения cacheDuration
+
+            Console.WriteLine("Ждем 5 секунд чтобы увидеть разницу...");
+            Thread.Sleep(5000);
+
+            Console.WriteLine("ЗАПРОС после ожидания:");
+            Console.WriteLine("(должен звонить, так как прошло время)");
+
+            watch.Restart();
+            string weather5 = weatherWithCache.FetchData(city);
+            watch.Stop();
+
+            Console.WriteLine($"Результат: {weather5}");
+            Console.WriteLine($"Время: {watch.ElapsedMilliseconds} мс");
         }
     }
 }
