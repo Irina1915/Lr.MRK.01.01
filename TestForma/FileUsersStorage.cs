@@ -34,7 +34,7 @@ namespace TestForma
         {
             foreach (User u in users)
             {
-                if (user.Login == u.Login && u.Password == user.Password)
+                if (user.Login == u.Login && u.Parol == user.Parol)
                 {
                     return true;
                 }

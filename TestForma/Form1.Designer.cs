@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.labelParol = new System.Windows.Forms.Label();
-            this.Vhod = new System.Windows.Forms.Button();
+            this.EnterButton = new System.Windows.Forms.Button();
             this.labelLogin = new System.Windows.Forms.Label();
             this.textBoxParol = new System.Windows.Forms.TextBox();
             this.comboBoxLogin = new System.Windows.Forms.ComboBox();
@@ -45,17 +45,16 @@
             this.labelParol.TabIndex = 0;
             this.labelParol.Text = "Введите пароль:";
             // 
-            // Vhod
+            // EnterButton
             // 
-            this.Vhod.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.Vhod.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Vhod.Location = new System.Drawing.Point(333, 154);
-            this.Vhod.Name = "Vhod";
-            this.Vhod.Size = new System.Drawing.Size(101, 49);
-            this.Vhod.TabIndex = 1;
-            this.Vhod.Text = "Войти";
-            this.Vhod.UseVisualStyleBackColor = false;
-            this.Vhod.Click += new System.EventHandler(this.Vhod_Click);
+            this.EnterButton.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.EnterButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.EnterButton.Location = new System.Drawing.Point(333, 154);
+            this.EnterButton.Name = "EnterButton";
+            this.EnterButton.Size = new System.Drawing.Size(101, 49);
+            this.EnterButton.TabIndex = 1;
+            this.EnterButton.Text = "Войти";
+            this.EnterButton.UseVisualStyleBackColor = false;
             // 
             // labelLogin
             // 
@@ -81,7 +80,6 @@
             this.comboBoxLogin.Name = "comboBoxLogin";
             this.comboBoxLogin.Size = new System.Drawing.Size(234, 21);
             this.comboBoxLogin.TabIndex = 5;
-            this.comboBoxLogin.SelectedIndexChanged += new System.EventHandler(this.comboBoxLogin_SelectedIndexChanged);
             // 
             // Form1
             // 
@@ -92,7 +90,7 @@
             this.Controls.Add(this.comboBoxLogin);
             this.Controls.Add(this.textBoxParol);
             this.Controls.Add(this.labelLogin);
-            this.Controls.Add(this.Vhod);
+            this.Controls.Add(this.EnterButton);
             this.Controls.Add(this.labelParol);
             this.Name = "Form1";
             this.Text = "LoginForm";
@@ -104,7 +102,7 @@
         #endregion
 
         private System.Windows.Forms.Label labelParol;
-        private System.Windows.Forms.Button Vhod;
+        private System.Windows.Forms.Button EnterButton;
         private System.Windows.Forms.Label labelLogin;
         private System.Windows.Forms.TextBox textBoxParol;
         private System.Windows.Forms.ComboBox comboBoxLogin;

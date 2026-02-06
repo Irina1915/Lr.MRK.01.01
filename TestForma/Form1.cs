@@ -14,7 +14,7 @@ namespace TestForma
     {
         private FileUsersStorage AllLoginAndPassword = new FileUsersStorage();
         private List<string> logins = new List<string>();
-        public MainForm()
+        public Form1()
         {
             InitializeComponent();
             List<User> allers = new List<User>();
@@ -25,36 +25,28 @@ namespace TestForma
                 logins.Add(u.Login);
             }
 
-            LoginСomboBox.DataSource = logins;
+            comboBoxLogin.DataSource = logins;
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
 
         private void EnterButton_Click(object sender, EventArgs e)
         {
 
 
             List<User> Alls = AllLoginAndPassword.Load();
-            string login = LoginСomboBox.Text;
-            string password = PasswordTextBox.Text;
+            string login = comboBoxLogin.Text;
+            string password = textBoxParol.Text;
 
             if (AllLoginAndPassword.Authorize(login, password))
             {
-                MessageBox.Show("Уроооо, ты смог зайти!!!");
+                MessageBox.Show("Молодец ");
             }
             else
             {
-                MessageBox.Show("Оуууу ноу, не взламывай");
+                MessageBox.Show("не взломаешь");
             }
 
         }
 
-        private void LoginСomboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }
