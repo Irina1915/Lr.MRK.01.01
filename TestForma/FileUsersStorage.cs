@@ -13,18 +13,37 @@ namespace TestForma
     {
         public List<User> Load()
         {
-            List<User> allUsers = new List<User>();
-            string path = "Login and Parol.txt";
-            StreamReader reader = new StreamReader(path);
-
+            List<User> allers = new List<User>();
+            string patch = "LoginAndPassword.txt";
+            StreamReader reader = new StreamReader(patch);
             string line;
             while ((line = reader.ReadLine()) != null)
             {
                 string[] lines = line.Split('-');
-                allUsers.Add(new User(lines[0], lines[1]));
+                allers.Add(new User(lines[0], lines[1]));
             }
-            return allUsers;
+            return allers;
         }
+        public bool Authorize(string login, string password)
+        {
+            List<User> Alls = Load();
+            User user = new User(login, password);
+            return Contains(Alls, user);
+        }
+        private bool Contains(List<User> users, User user)
+        {
+            foreach (User u in users)
+            {
+                if (user.Login == u.Login && u.Password == user.Password)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
     }
+
 }
 

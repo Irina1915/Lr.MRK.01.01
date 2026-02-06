@@ -12,47 +12,49 @@ namespace TestForma
 {
     public partial class Form1: Form
     {
-        private FileUsersStorage AllPasswordAndLogin = new FileUsersStorage();
-        public Form1()
+        private FileUsersStorage AllLoginAndPassword = new FileUsersStorage();
+        private List<string> logins = new List<string>();
+        public MainForm()
         {
             InitializeComponent();
+            List<User> allers = new List<User>();
+            allers = AllLoginAndPassword.Load();
+
+            foreach (User u in allers)
+            {
+                logins.Add(u.Login);
+            }
+
+            LoginСomboBox.DataSource = logins;
         }
 
-
-        private void Vhod_Click(object sender, EventArgs e)
+        private void Form1_Load(object sender, EventArgs e)
         {
-            List<User> check = AllPasswordAndLogin.Load();
-            string login = comboBoxLogin.Text;
-            string parol = textBoxParol.Text;
-            User u1 = new User(login, parol);
 
-            if (Contains(check, u1))
+        }
+
+        private void EnterButton_Click(object sender, EventArgs e)
+        {
+
+
+            List<User> Alls = AllLoginAndPassword.Load();
+            string login = LoginСomboBox.Text;
+            string password = PasswordTextBox.Text;
+
+            if (AllLoginAndPassword.Authorize(login, password))
             {
-                MessageBox.Show("ето ты");
+                MessageBox.Show("Уроооо, ты смог зайти!!!");
             }
             else
             {
-                MessageBox.Show("ахахах, не взломаешь");
+                MessageBox.Show("Оуууу ноу, не взламывай");
             }
 
         }
-        private bool Contains(List<User> check, User u1)
-        {
-            foreach (User u in check)
-            {
-                if (u1.Login == u.Login && u1.Parol == u.Parol)
-                {
-                    return true;
-                }
-            }
-            return false;
 
-        }
-
-        private void comboBoxLogin_SelectedIndexChanged(object sender, EventArgs e)
+        private void LoginСomboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string selectedUser = comboBoxLogin.SelectedItem.ToString();
-            List<User> userSelected = 
+
         }
     }
 }
