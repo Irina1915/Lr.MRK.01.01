@@ -34,7 +34,7 @@ namespace lr_3
                 }
             );
 
-            products_.Add("Мясо",
+            products_.Add("Мясо", 
                 new List<Product>()
                 {
                     new Product ("Курица", 70.0, 10),
