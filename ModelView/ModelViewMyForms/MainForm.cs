@@ -17,10 +17,11 @@ namespace ModelViewMyForms
     public partial class MainForm : Form
     {
         private UserPresenter presenter_;
+        UsersTableView usertable;
         public MainForm()
         {
             InitializeComponent();
-            UsersTableView usertable = new UsersTableView();
+            usertable = new UsersTableView();
             Controls.Add(usertable);
             usertable.Dock = DockStyle.Top;
 
@@ -33,7 +34,7 @@ namespace ModelViewMyForms
             if (MessageBox.Show("Вы точно хотите удалить пользователя?", "Внимание!",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                List<User> selectetUsers = UserView.GetSelectedUsers();
+                List<User> selectetUsers = usertable.GetSelectedUsers();
                 presenter_.Remove(selectetUsers);
             }
         }
