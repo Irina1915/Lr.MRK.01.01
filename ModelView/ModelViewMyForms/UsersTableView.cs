@@ -30,6 +30,7 @@ namespace ModelViewMyForms
 
         public void ShowUsers(List<User> users)
         {
+            DataSource = null;
             DataSource = users;
         }
     }

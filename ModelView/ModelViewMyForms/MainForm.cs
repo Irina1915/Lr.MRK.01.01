@@ -1,4 +1,5 @@
-﻿using ModelViewBiblioteka.Model;
+﻿using ModelViewBiblioteka;
+using ModelViewBiblioteka.Model;
 using ModelViewBiblioteka.Model_Views;
 using ModelViewBiblioteka.Presenter;
 using ModelViewBiblioteka.View;
@@ -37,6 +38,16 @@ namespace ModelViewMyForms
                 List<User> selectetUsers = usertable.GetSelectedUsers();
                 presenter_.Remove(selectetUsers);
             }
+        }
+
+        private void toolStripButtonAdd_Click(object sender, EventArgs e)
+        {
+            AddUserForm addUserForm = new AddUserForm();
+            if (addUserForm.ShowDialog() == DialogResult.OK)
+            {
+                MessageBox.Show("....");
+            }
+            addUserForm.Dispose();
         }
     }
 }

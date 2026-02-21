@@ -42,5 +42,10 @@ namespace ModelViewBiblioteka.Model
                 }
             }
         }
+        public bool AddUser(User u)
+        {
+            allUsers_.Add(u);
+            return true;
+        }
     }
 }

@@ -31,7 +31,10 @@ namespace ModelViewBiblioteka.Presenter
 
         public void Add (User u)
         {
-
+            model_.AddUser(u);
+            views_.ShowUser(model_.LoadUser());
         }
+
+     
     }
 }
