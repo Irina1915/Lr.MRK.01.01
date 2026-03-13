@@ -1,14 +1,14 @@
-﻿using ClassLr_3.Views;
+﻿using lr_3;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ClassLr_3
+namespace ClassLr_3.Views
 {
-    public class ProductModul : Dobavlenie
+    interface Dobavlenie
     {
-
+        List<Product> LoadDataFromCsv();
     }
 }

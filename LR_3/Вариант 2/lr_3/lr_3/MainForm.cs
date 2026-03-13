@@ -8,11 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace lr_3
 {
     public partial class MainForm : Form
     {
         private Dictionary<string, List<Product>> products_ = new Dictionary<string, List<Product>>();
+        private Dictionary<string, List<Product>> tovar_ = new Dictionary<string, List<Product>>();
+        private Dictionary<string, int> orderItems_ = new Dictionary<string, int>();
 
         public MainForm()
         {
@@ -31,7 +34,7 @@ namespace lr_3
             products_.Add("Овощи",
                 new List<Product>()
                 {
-                    new Product ("Огурцы", 8.0, 6, 34, "../../Рисунок/огурцы.jpg.jpg"),
+                    new Product ("Огурцы", 8.0, 6, 34, "../../Рисунок/Огурцы.jpg"),
                     new Product ("Помидоры", 3.0, 5, 12, "../../Рисунок/Мандарины.jpg")
                 }
             );
@@ -73,7 +76,47 @@ namespace lr_3
 
         private void button_Click(object sender, EventArgs e)
         {
-            TextRichBox.AppendText("Продукты из категории: " + ProductListBox.Text + ": " + ProductComboBox.Text + ", " + labelKol_vo.Text + " \n");
+            string genre = ProductListBox.SelectedItem as string;
+            // Получаем список товаров для этой категории
+            if (tovar_.TryGetValue(genre, out List<Product> films))
+            {
+                // Очищаем RichTextBox перед выводом
+                TextRichBox.Clear();
+
+                // Перебираем все товары и выводим их информацию
+                foreach (var film in films)
+                {
+                    TextRichBox.AppendText($"Название: {film.Name}, ");
+                    TextRichBox.AppendText($"Осталось прокатов: {film.Kol_vo}\n");
+                }
+            }
+        }
+
+        private void buttonOt_Click(object sender, EventArgs e)
+        {
+            Product selectedFilms = ProductComboBox.SelectedItem as Product;
+            if (selectedFilms != null)
+            {
+                string drugName = selectedFilms.Name;
+                int quantity = (int)NumericUpDown.Value;
+                if (orderItems_.ContainsKey(drugName))
+                {
+                    orderItems_[drugName] += quantity;
+                }
+                else
+                {
+                    orderItems_[drugName] = quantity;
+                }
+
+                string orderText = "Заказано товаров:\n";
+                foreach (var item in orderItems_)
+                {
+                    orderText += $"{item.Key}: {item.Value}.\n";
+
+                }
+
+                MessageBox.Show(orderText, "Текущий заказ");
+            }
         }
     }
 }

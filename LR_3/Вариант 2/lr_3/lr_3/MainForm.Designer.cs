@@ -39,7 +39,10 @@
             this.TextRichBox = new System.Windows.Forms.RichTextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.labelKol_vo = new System.Windows.Forms.Label();
+            this.buttonOt = new System.Windows.Forms.Button();
+            this.NumericUpDown = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.FotoPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // ProductListBox
@@ -116,7 +119,7 @@
             // button
             // 
             this.button.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.button.Location = new System.Drawing.Point(483, 248);
+            this.button.Location = new System.Drawing.Point(388, 248);
             this.button.Name = "button";
             this.button.Size = new System.Drawing.Size(105, 23);
             this.button.TabIndex = 9;
@@ -151,12 +154,31 @@
             this.labelKol_vo.TabIndex = 12;
             this.labelKol_vo.Text = "label2";
             // 
+            // buttonOt
+            // 
+            this.buttonOt.Location = new System.Drawing.Point(499, 248);
+            this.buttonOt.Name = "buttonOt";
+            this.buttonOt.Size = new System.Drawing.Size(75, 23);
+            this.buttonOt.TabIndex = 13;
+            this.buttonOt.Text = "Отчёт";
+            this.buttonOt.UseVisualStyleBackColor = true;
+            this.buttonOt.Click += new System.EventHandler(this.buttonOt_Click);
+            // 
+            // NumericUpDown
+            // 
+            this.NumericUpDown.Location = new System.Drawing.Point(454, 211);
+            this.NumericUpDown.Name = "NumericUpDown";
+            this.NumericUpDown.Size = new System.Drawing.Size(120, 20);
+            this.NumericUpDown.TabIndex = 14;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LemonChiffon;
             this.ClientSize = new System.Drawing.Size(600, 366);
+            this.Controls.Add(this.NumericUpDown);
+            this.Controls.Add(this.buttonOt);
             this.Controls.Add(this.labelKol_vo);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.TextRichBox);
@@ -172,6 +194,7 @@
             this.Name = "MainForm";
             this.Text = "MainForm";
             ((System.ComponentModel.ISupportInitialize)(this.FotoPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NumericUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -190,6 +213,8 @@
         private System.Windows.Forms.RichTextBox TextRichBox;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label labelKol_vo;
+        private System.Windows.Forms.Button buttonOt;
+        private System.Windows.Forms.NumericUpDown NumericUpDown;
     }
 }
 
