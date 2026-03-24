@@ -40,5 +40,10 @@ namespace DBTestWinForm
                 loader.ClearUsers();
             }
         }
+
+        private void CreateButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

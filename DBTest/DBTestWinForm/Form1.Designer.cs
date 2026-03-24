@@ -47,16 +47,17 @@
             // 
             // CreateButton
             // 
-            this.CreateButton.Location = new System.Drawing.Point(38, 310);
+            this.CreateButton.Location = new System.Drawing.Point(683, 301);
             this.CreateButton.Name = "CreateButton";
             this.CreateButton.Size = new System.Drawing.Size(105, 45);
             this.CreateButton.TabIndex = 1;
             this.CreateButton.Text = "Добавить";
             this.CreateButton.UseVisualStyleBackColor = true;
+            this.CreateButton.Click += new System.EventHandler(this.CreateButton_Click);
             // 
             // deleteButton
             // 
-            this.deleteButton.Location = new System.Drawing.Point(156, 310);
+            this.deleteButton.Location = new System.Drawing.Point(12, 301);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(105, 45);
             this.deleteButton.TabIndex = 2;
@@ -66,7 +67,7 @@
             // 
             // buttonClear
             // 
-            this.buttonClear.Location = new System.Drawing.Point(679, 310);
+            this.buttonClear.Location = new System.Drawing.Point(123, 301);
             this.buttonClear.Name = "buttonClear";
             this.buttonClear.Size = new System.Drawing.Size(109, 45);
             this.buttonClear.TabIndex = 3;

@@ -42,6 +42,7 @@
             this.textBoxPhone = new System.Windows.Forms.TextBox();
             this.textBoxEmail = new System.Windows.Forms.TextBox();
             this.buttonClose = new System.Windows.Forms.Button();
+            this.buttonApply = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -106,12 +107,13 @@
             // 
             // ButtonAddUser
             // 
-            this.ButtonAddUser.Location = new System.Drawing.Point(211, 339);
+            this.ButtonAddUser.Location = new System.Drawing.Point(131, 339);
             this.ButtonAddUser.Name = "ButtonAddUser";
             this.ButtonAddUser.Size = new System.Drawing.Size(140, 43);
             this.ButtonAddUser.TabIndex = 6;
             this.ButtonAddUser.Text = "Создат";
             this.ButtonAddUser.UseVisualStyleBackColor = true;
+            this.ButtonAddUser.Click += new System.EventHandler(this.ButtonAddUser_Click);
             // 
             // textBoxLogin
             // 
@@ -157,12 +159,21 @@
             // 
             // buttonClose
             // 
-            this.buttonClose.Location = new System.Drawing.Point(463, 339);
+            this.buttonClose.Location = new System.Drawing.Point(335, 339);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(125, 43);
             this.buttonClose.TabIndex = 13;
             this.buttonClose.Text = "Отмен";
             this.buttonClose.UseVisualStyleBackColor = true;
+            // 
+            // buttonApply
+            // 
+            this.buttonApply.Location = new System.Drawing.Point(536, 339);
+            this.buttonApply.Name = "buttonApply";
+            this.buttonApply.Size = new System.Drawing.Size(119, 43);
+            this.buttonApply.TabIndex = 14;
+            this.buttonApply.Text = "Применить";
+            this.buttonApply.UseVisualStyleBackColor = true;
             // 
             // FormAddUser
             // 
@@ -170,6 +181,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.buttonApply);
             this.Controls.Add(this.buttonClose);
             this.Controls.Add(this.textBoxEmail);
             this.Controls.Add(this.textBoxPhone);
@@ -207,5 +219,6 @@
         private System.Windows.Forms.TextBox textBoxPhone;
         private System.Windows.Forms.TextBox textBoxEmail;
         private System.Windows.Forms.Button buttonClose;
+        private System.Windows.Forms.Button buttonApply;
     }
 }

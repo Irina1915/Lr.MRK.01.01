@@ -6,6 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+using System.Xml.Linq;
+using System.Security.Policy;
 
 namespace DBTestWinForm
 {
@@ -95,11 +98,11 @@ namespace DBTestWinForm
             return result;
         }
 
-        public bool AddUsers()
+        public bool AddUsers(User u)
         {
             bool result = false;
             var con = new NpgsqlConnection(connectSetting);
-            var sql = "INSERT INTO myuser (login,password,lastame,name,phone,email) VALUES (login,password,lastame,name,phone,email)";
+            var sql = "INSERT INTO myuser (login,password,lastame,name,phone,email) VALUES (@login,@password,@lastame,@name,@phone,@email)";
             con.Open();
             var cmd = new NpgsqlCommand(sql, con);
             int execute = cmd.ExecuteNonQuery();
@@ -112,7 +115,7 @@ namespace DBTestWinForm
             return result;
         }
 
-
+        
 
     }
 }

@@ -9,6 +9,7 @@ namespace DBTestWinForm
 {
     public class User
     {
+
         [DisplayName("Логин")]
         public string Login { get; set; }
         [DisplayName("Пароль")]
